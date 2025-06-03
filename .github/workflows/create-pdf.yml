@@ -1,4 +1,4 @@
-name: Generate PDFKit WidgetTest (Base64 Fallback)
+name: Generate PDFKit WidgetTest
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Run Swift script & Emit Base64
+    name: Run Swift script on macOS
     runs-on: macos-latest
 
     steps:
@@ -23,8 +23,8 @@ jobs:
           swift CreatePDFWidgets.swift
           ls -lh WidgetTest.pdf
 
-      - name: Base64-encode WidgetTest.pdf
-        run: |
-          echo "===== BEGIN BASE64 WIDGETTEST.PDF ====="
-          base64 WidgetTest.pdf
-          echo "=====  END BASE64 WIDGETTEST.PDF  ====="
+      - name: Upload WidgetTest.pdf
+        uses: actions/upload-artifact@v2
+        with:
+          name: WidgetTest-pdf
+          path: WidgetTest.pdf
