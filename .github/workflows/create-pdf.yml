@@ -24,7 +24,7 @@ jobs:
           ls -lh WidgetTest.pdf
 
       - name: Upload WidgetTest.pdf
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@v2.3.2
         with:
           name: WidgetTest-pdf
           path: WidgetTest.pdf
